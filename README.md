@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CV → Career Roadmap
 
-## Getting Started
+AI-powered career guidance from your resume. Upload your CV and get personalized career recommendations, skill gap analysis, learning roadmaps, and job matches.
 
-First, run the development server:
+## Features
 
+- 📄 CV Analysis (PDF/TXT)
+- 🎯 Next Career Role Suggestions
+- 📊 Skill Gap Visualization
+- 📚 6-Month Learning Roadmap
+- 💼 Job Recommendations
+- 💰 Salary Estimates
+
+## 100% Free Stack
+
+- **AI**: Google Gemini (free, no credit card)
+- **Jobs**: JSearch API (100 free/month) + Adzuna (free tier)
+- **Framework**: Next.js 15
+- **Hosting**: Vercel (free tier)
+
+## Quick Start
 ```bash
+# Install dependencies
+npm install
+
+# Setup environment
+cp .env.example .env.local
+# Add your free Gemini API key from https://ai.google.dev/
+
+# Check setup
+npm run setup
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Get API Keys (All Free!)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Google Gemini** (Required): https://ai.google.dev/
+2. **JSearch** (Optional): https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch
+3. **Adzuna** (Optional): https://developer.adzuna.com/
 
-## Learn More
+See `SETUP.md` for detailed instructions.
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- Google Gemini AI
+- PDF Parse
+- React Dropzone
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy
 
-## Deploy on Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

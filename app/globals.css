@@ -1,26 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Zeyada&display=swap");
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-sora: "Sora", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.zeyada-regular {
+  font-family: "Zeyada", cursive;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Dark mode color variables */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* Remove the media query since we're using class-based dark mode */
+/* @media (prefers-color-scheme: dark) is replaced by .dark class above */
+
+body {
+  font-family: var(--font-sora);
+  color: var(--foreground);
+  background: var(--background);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom scrollbar - with dark mode support */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* ::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+} */
+
+::-webkit-scrollbar-thumb {
+  background: #6e11b0;
+  border-radius: 14px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #80008072;
+}
+
+/* Dark mode scrollbar - darker purple */
+.dark ::-webkit-scrollbar-thumb {
+  background: #9333ea;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #a855f7;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+  background-size: 1000px 100%;
+}
+
+/* Dark mode shimmer */
+.dark .shimmer {
+  background: linear-gradient(to right, #1f1f1f 4%, #2f2f2f 25%, #1f1f1f 36%);
+  background-size: 1000px 100%;
 }
