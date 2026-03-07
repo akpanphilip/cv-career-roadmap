@@ -18,9 +18,10 @@ export default function LoadingSpinner({
 
   return (
     <div className="flex flex-col items-center justify-center p-8">
-      <Loader2
+      {/* <Loader2
         className={`${sizeClasses[size]} animate-spin text-purple-500`}
-      />
+      /> */}
+      <img src="./images/loading.gif" className="w-15 mx-auto" alt="loading gif" />
       {message && <p className="mt-4 text-gray-600 text-center">{message}</p>}
     </div>
   );
