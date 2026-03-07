@@ -18,7 +18,7 @@ export default function RoleSelector({
     <div className="mt-28">
       <h3 className="text-2xl text-gray-300 font-bold mb-6 flex items-center gap-2">
         <Target className="w-8 h-8 text-purple-500" />
-        Recommended Next Roles
+        Next Recommended Roles
       </h3>
 
       <div className="grid gap-4">
@@ -27,7 +27,7 @@ export default function RoleSelector({
             key={idx}
             onClick={() => onSelectRole(role)}
             className={`
-              text-left p-6 border-2 rounded-lg transition-all
+              text-left p-6 border-2 rounded-lg cursor-pointer transition-all
               ${
                 selectedRole?.title === role.title
                   ? "border-purple-300 bg-purple-50"
