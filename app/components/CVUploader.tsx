@@ -95,8 +95,8 @@ export default function CVUploader({ onUploadComplete }: CVUploaderProps) {
       <div
         {...getRootProps()}
         className={`
-          border-3 border-dotted border-purple-200 rounded-xl p-12 text-center cursor-pointer
-          transition-all duration-200
+          border border-purple-200 p-24 rounded-xl shadow-md hover:shadow-lg transition-shadow text-center cursor-pointer
+           duration-200
           ${
             isDragActive
               ? "border-purple-500 bg-blue-50 scale-105"
@@ -112,7 +112,7 @@ export default function CVUploader({ onUploadComplete }: CVUploaderProps) {
             <LoadingSpinner message="Analyzing your CV..." />
             <div className="mt-4 w-64 mx-auto bg-gray-200 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-purple-500 h-2 rounded-full transition-all duration-300"
+                className="bg-purple-600 h-2 rounded-full transition-all duration-300"
                 style={{ width: `${progress}%` }}
               ></div>
             </div>
@@ -123,7 +123,7 @@ export default function CVUploader({ onUploadComplete }: CVUploaderProps) {
             {/* <CheckCircle className="w-6 h-6 text-green-500" /> */}
             <div className="text-left">
               <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-purple-500" />
+                <FileText className="w-5 h-5 text-purple-600" />
                 <span className="text-gray-700 font-medium">{file.name}</span>
               </div>
               <p className="text-xs text-gray-500">

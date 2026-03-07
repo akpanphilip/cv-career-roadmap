@@ -8,7 +8,7 @@ import SkillGapChart from "./components/SkillGapChart";
 import LearningRoadmap from "./components/LearningRoadmap";
 import JobRecommendations from "./components/JobRecommendations";
 import LoadingSpinner from "./components/LoadingSpinner";
-import ThemeToggle from "./components/ThemeToggle";
+import Link from "next/link";
 import {
   CVAnalysis,
   NextRole,
@@ -41,7 +41,7 @@ export default function Home() {
       }
     };
 
-    handleResize(); 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -160,12 +160,39 @@ export default function Home() {
     <>
       {/* <ThemeToggle /> */}
 
-      <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-purple-50">
-        <div className="container mx-auto px-4 py-12">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <header
+      <main className="min-h-screen bg-linear-to-br from-purple-50 via-white to-purple-100">
+        {/* Header */}
+        <div className="bg-white">
+          <div className="mx-auto flex justify-between items-center backdrop-blur border-b border-gray-300 fixed top-0 left-0 w-full z-50 transition-all mb-12 py-5 px-4 md:px-8 lg:px-12">
+            <Link href="/">
+              <span className="text-2xl font-semibold text-purple-700">
+                {/* zeyada-regular */}
+                SkillBridge
+              </span>
+            </Link>
+
+            {!cvAnalysis && (
+              <button className="bg-purple-700 text-white p-3 rounded-lg text-[12px]">
+                Get Started
+              </button>
+            )}
+
+            {cvAnalysis && (
+              <button
+                onClick={handleReset}
+                className="inline-flex cursor-pointer items-center gap-2 p-3 bg-purple-700 text-white text-[12px] rounded-lg transition-colors"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Start Over
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="px-4 md:px-8 lg:px-12 mx-auto">
+          {!cvAnalysis && (
+            <div className="text-center px-8 mb-12 mt-18 py-10">
+              {/* <div className="flex items-center justify-between gap-3 mb-4 bg-white">
+               <header
                 className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
                   scrolled
                     ? "bg-white/90 backdrop-blur border-b border-gray-300 py-3"
@@ -181,31 +208,36 @@ export default function Home() {
                     SkillBridge
                   </h1>
                 </div>
-              </header>
-              {/* <h1 className="text-6xl font-semibold text-purple-700 zeyada-regular">SkillBridge</h1> */}
-            </div>
-            <p className="pt-10 text-sm text-gray-600 max-w-2xl mx-auto">
-              Upload your CV and get AI-powered career guidance: role
-              recommendations, skill analysis, learning paths, and job matches
-            </p>
+              </header> 
+            </div> */}
+              <p className="pt-10 text-[25px] lg:text-6xl max-w-1xl mx-auto font-semibold">
+                Upload your CV and get instant AI-powered career insights
+              </p>
 
-            {cvAnalysis && (
-              <button
-                onClick={handleReset}
-                className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors"
-              >
-                <RefreshCw className="w-4 h-4" />
-                Start Over
-              </button>
-            )}
-          </div>
+              <p className="text-gray-600 text-[18px] lg:text-[20px] mt-3 max-w-2xl text-center mx-auto">
+                Advance your career faster. Get role recommendations, skill gap
+                analysis, personalized learning paths, and job matches tailored
+                to your experience.
+              </p>
+
+              {cvAnalysis && (
+                <button
+                  onClick={handleReset}
+                  className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg transition-colors"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                  Start Over
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Upload Section */}
           {!cvAnalysis && <CVUploader onUploadComplete={handleCVAnalysis} />}
 
           {/* Results */}
           {cvAnalysis && (
-            <div className="space-y-8">
+            <div className="space-y-8 mt-18 py-20">
               {/* Profile Summary */}
               <ProfileSummary analysis={cvAnalysis} />
 
@@ -233,7 +265,7 @@ export default function Home() {
                       </div>
                     )}
                   </div>
-                
+
                   {/* RIGHT SIDE — Only appears when role selected */}
                   {selectedRole && (
                     <>
@@ -312,22 +344,21 @@ export default function Home() {
 
           {/* Loading Overlay */}
           {loading && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div className="fixed inset-0 bg-purple-100 bg-opacity-50 flex items-center justify-center z-50">
               <div className="bg-white rounded-lg p-8 max-w-sm">
                 <LoadingSpinner message={loadingMessage} />
               </div>
             </div>
           )}
-
-          {/* Footer */}
-          <footer className="mt-16 text-center text-gray-500 text-sm">
-            <span>
-              Your CV is analyzed securely. We don't store your personal
-              information |{" "}
-              <span className="font-semibold">Powered by Groq AI</span>
-            </span>
-          </footer>
         </div>
+        {/* Footer */}
+        <footer className="w-full py-5 px-4 md:px-8 lg:px-12 bg-[#6e11b0] text-white mt-24 text-center text-sm">
+          <span>
+            Your CV is analyzed securely. We don't store your personal
+            information |{" "}
+            <span className="font-semibold">Powered by Groq AI</span>
+          </span>
+        </footer>
       </main>
     </>
   );
